@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="xamarinprismapp.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="Start" Padding="20">
+                <Label Text="Hey, you there!"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Welcome to my"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Start"
+                       Font="Bold,20"/>
+
+                <Label Text="Xamarin App"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="End"
+                       Font="50"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="10">
+                <Entry Text="{Binding Username, Mode=TwoWay}"
+                       Placeholder="username"
+                       WidthRequest="200"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+                <Entry Text="{Binding Password, Mode=TwoWay}"
+                       Placeholder="password"
+                       WidthRequest="200"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+                <Button x:Name="login_button"
+                        Text="Log In"
+                        BackgroundColor="#1E88E5"
+                        WidthRequest="200"
+                        Command="{Binding LoginBtnCommand}"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="End" Padding="10,0,10,20">
+                <Label Text="You don't have an account?"
+                       VerticalTextAlignment="End"
+                       HorizontalOptions="Center"/>
+
+                <Button x:Name="signup_button"
+                        Text="Sign up NOW!"
+                        BackgroundColor="#E3F2FD"
+                        WidthRequest="200"
+                        VerticalOptions="End"
+                        Command="{Binding GoToSignUpPageCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

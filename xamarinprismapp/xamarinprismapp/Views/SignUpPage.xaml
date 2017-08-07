@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="xamarinprismapp.Views.SignUpPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="Start" Padding="20">
+                <Label Text="Gimme some info"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Start"
+                       Font="Bold,20"/>
+
+                <Label Text="about You!"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="End"
+                       Font="50"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="Center"
+                         Padding="20">
+                <Entry Placeholder="Name"
+                       Text="{Binding Name, Mode=TwoWay}"/>
+                <Entry Placeholder="Phone"
+                       Text="{Binding Phone, Mode=TwoWay}" />
+                <Entry Placeholder="Email"
+                       Text="{Binding Email, Mode=TwoWay}"/>
+                <Entry Placeholder="Password"
+                       Text="{Binding Password, Mode=TwoWay}"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="End" 
+                         Orientation="Horizontal" 
+                         HorizontalOptions="FillAndExpand"
+                         Padding="20">
+                <Button Text="Submit"
+                        MinimumWidthRequest="50"
+                        HorizontalOptions="StartAndExpand"
+                        Command="{Binding SubmitBtnCommand}"/>
+
+                <Button Text="Cancel"
+                        MinimumWidthRequest="50"
+                        HorizontalOptions="EndAndExpand"
+                        Command="{Binding CancelBtnCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
