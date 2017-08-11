@@ -35,6 +35,7 @@ namespace xamarinprismapp.ViewModels
 
         private void GoToSignUpPage()
         {
+            Username = "Going out";
             _navigationService.NavigateAsync("SignUpPage");
         }
 
@@ -65,10 +66,14 @@ namespace xamarinprismapp.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+            //_dialogService.DisplayAlertAsync("Navigated to","balbal", "ok");
+            Username = "navigatedToFirst";
+
             if (parameters.ContainsKey("Name") && parameters.ContainsKey("Password"))
             {
-                usernameOut = (string)parameters["Name"];
-                passwordOut = (string)parameters["Password"];
+                usernameOut = parameters["Name"].ToString();
+                passwordOut = parameters["Password"].ToString();
+                Username = parameters["Name"].ToString();
             }
         }
     }
