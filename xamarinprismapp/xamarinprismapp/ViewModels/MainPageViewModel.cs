@@ -3,7 +3,10 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using xamarinprismapp.Helpers;
+using xamarinprismapp.Models;
 
 namespace xamarinprismapp.ViewModels
 {
@@ -16,9 +19,16 @@ namespace xamarinprismapp.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private ObservableCollection<Tarefa> _tarefa;
+        public ObservableCollection<Tarefa> Tarefa
+        {
+            get { return _tarefa; }
+            set { SetProperty(ref _tarefa, value); }
+        }
+
         public MainPageViewModel()
         {
-
+            Tarefa = ApiCaller.GetTarefas();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

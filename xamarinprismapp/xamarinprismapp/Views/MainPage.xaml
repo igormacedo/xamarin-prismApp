@@ -7,6 +7,31 @@
              Title="MainPage">
     
     <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+        
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Order="Primary" Text="Add" Command="{Binding AddItemCommand}"/>
+        </ContentPage.ToolbarItems>
+        
+        
+        <StackLayout Margin="10">
+            <Label Text="MainPage"/>
+            <ListView
+                ItemsSource="{Binding Tarefa}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Nome}"/>
+                                <Button Text="Done"
+                                        Command="{Binding FinalizadoCommand}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+        
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             
             <Label x:Name="username_label" FontSize="Medium" />
