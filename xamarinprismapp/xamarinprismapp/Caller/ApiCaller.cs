@@ -1,18 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using xamarinprismapp.Models;
 
-namespace xamarinprismapp.Helpers
+namespace xamarinprismapp.Caller
 {
     public static class ApiCaller
     {
-        private static Uri BASE_ADDRESS = new Uri("http://gsuite.azurewebsites.net/");
+        private static Uri BASE_ADDRESS = new Uri("http://igormacedo.pythonanywhere.com/");
 
         public static ObservableCollection<Tarefa> GetTarefas()
         {
@@ -20,18 +16,16 @@ namespace xamarinprismapp.Helpers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = BASE_ADDRESS;
-                HttpResponseMessage response = client.GetAsync("api/tarefasservice").Result;
-
+                HttpResponseMessage response = client.GetAsync("api/todos").Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var json = response.Content.ReadAsStringAsync().Result;
-                    return result = JsonConvert.DeserializeObject<ObservableCollection<Tarefa>>(json);
-
+                    TarefaHolder th = JsonConvert.DeserializeObject<TarefaHolder>(json);
+                    return result = th.TarefaList;
                 }
-
                 else
                 {
-                    return result = new ObservableCollection<Models.Tarefa>();
+                    return result = new ObservableCollection<Tarefa>();
                 }
             }
         }

@@ -45,16 +45,16 @@ namespace xamarinprismapp.ViewModels
                                                     .ObservesProperty(()=>Username)
                                                     .ObservesProperty(()=>Password));
 
-        private void LoginBtn()
+        private async void LoginBtn()
         {
-            if(usernameOut == _username && passwordOut == _password)
+            if(_username == null && _password == null)
             {
-                _dialogService.DisplayAlertAsync("Wow!", "you know this stuff, " + _username, "I'm a hacker");
-                _navigationService.NavigateAsync(new Uri("/MainPage", UriKind.Absolute));
+                await _dialogService.DisplayAlertAsync("Wow!", "you know this stuff, " + _username, "I'm a hacker");
+                await _navigationService.NavigateAsync(new Uri("/MainPage", UriKind.Absolute));
             }
             else
             {
-                _dialogService.DisplayAlertAsync("Error!", "Wrong username, try: " + usernameOut + " & " + passwordOut, "I'm a hacker");
+                await _dialogService.DisplayAlertAsync("Error!", "Wrong username, try: " + usernameOut + " & " + passwordOut, "I'm a hacker");
             }
         }
 
@@ -67,7 +67,6 @@ namespace xamarinprismapp.ViewModels
         public void OnNavigatingTo(NavigationParameters parameters)
         {
             //_dialogService.DisplayAlertAsync("Navigated to","balbal", "ok");
-            Username = "navigatedToFirst";
 
             if (parameters.ContainsKey("Name") && parameters.ContainsKey("Password"))
             {

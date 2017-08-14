@@ -5,14 +5,20 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="xamarinprismapp.Views.MainPage"
              Title="MainPage">
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Add"/>
+        <ToolbarItem Order="Primary" Text="Refresh"/>
+    </ContentPage.ToolbarItems>
+
     <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
         
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Order="Primary" Text="Add" Command="{Binding AddItemCommand}"/>
-        </ContentPage.ToolbarItems>
-        
-        
+        <Button x:Name="login_button"
+                        Text="Refresh"
+                        BackgroundColor="#1E88E5"
+                        WidthRequest="200"
+                        Command="{Binding RefreshCommand}"/>
+
         <StackLayout Margin="10">
             <Label Text="MainPage"/>
             <ListView
@@ -22,8 +28,7 @@
                         <ViewCell>
                             <StackLayout>
                                 <Label Text="{Binding Nome}"/>
-                                <Button Text="Done"
-                                        Command="{Binding FinalizadoCommand}"/>
+                                <Button Text="Done"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
